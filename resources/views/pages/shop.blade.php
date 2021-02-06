@@ -52,6 +52,7 @@
                                 <div class="hover-option">
                                 	<div class="add-cart-btn">
                                     	<a href="#" class="btn btn-primary">Add To Cart</a>
+a
                                     </div>
                                 </div>
                             </div>
