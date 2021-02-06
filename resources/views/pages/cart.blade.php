@@ -76,7 +76,7 @@
                             <tr>
                                 <td colspan="12">
                                     <ul class="table-btn">
-                                        <li><a href="/shop/0/0" class="btn btn-secondary"><i class="fa fa-chevron-left"></i>Continue Shopping</a></li>
+                                        <li><a href="/shop/0" class="btn btn-secondary"><i class="fa fa-chevron-left"></i>Continue Shopping</a></li>
                                         <li><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i>Update cart</a></li>
                                     </ul>
                                 </td>

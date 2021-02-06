@@ -130,8 +130,8 @@ document.write("<sc"+"ript src='" +scJsHost +"statcounter.com/counter/counter.js
                     	<div class="header-logo">
                         	<a href="/"><img src="/image/logo.png" alt="logo"></a>
                         </div>
-                        <form class="header-form">
-                        <input class="search-box" placeholder="Search Product..."  required value="" type="search">
+                        <form class="header-form" action="/shop/0" method="get">
+                        <input class="search-box" placeholder="Search Product..."  required value="" type="search" name="searchbox">
                         <button type="submit">Search</button>
                     </form>
                     	<div class="header-right">
@@ -139,9 +139,9 @@ document.write("<sc"+"ript src='" +scJsHost +"statcounter.com/counter/counter.js
                             <a href="#">
                                 <div class="cart-icon">
                                     <img src="/image/cart-icon.png" alt="cart-icon">
-                                    <span>02</span>
+                                    <span>16</span>
                                 </div>
-                                ₹237.00<i class="fa fa-angle-down"></i>
+                                ₹42.00<i class="fa fa-angle-down"></i>
                             </a>
                             <div class="cart-box">
                                 <div class="cart-info">
@@ -205,7 +205,7 @@ document.write("<sc"+"ript src='" +scJsHost +"statcounter.com/counter/counter.js
                                 </li>
                                 <li>
                                 <li class="nav-item">
-                                	<a class="nav-link" href="/shop/0/0">Shop</a>
+                                	<a class="nav-link" href="/shop/0">Shop</a>
                                 </li>
                                 <li class="nav-item">
                                 	<a class="nav-link" href="/contact">Contact</a>

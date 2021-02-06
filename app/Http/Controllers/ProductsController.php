@@ -16,8 +16,12 @@ class ProductsController extends Controller
         return view('pages.product', ['product' => $product]);
     }
 
-    public function getProducts($search,$sort) {
+    public function getProducts($sort) {
         Paginator::useBootstrap();
+
+        $categories = DB::select('select category,count(*) as count from products group by category order by count desc');
+
+        $search = $_GET['searchbox'] ?? 0;
         if ($search != 0 && $sort != 0) {
             $products = DB::table('products')->where('name', 'like', '%'.$search.'%')->orWhere('category', 'like', '%'.$search.'%')->orWhere('season', 'like', '%'.$search.'%');
             switch ($sort) {
@@ -25,10 +29,10 @@ class ProductsController extends Controller
                 $products = $products->latest()->paginate(9);
                 break;
             case 2:
-                $products = $products->orderBy('finalPrize', 'desc')->paginate(9);
+                $products = $products->orderBy('finalPrize', 'asc')->paginate(9);
                 break;
             case 3:
-                $products = $products->orderBy('finalPrize', 'asc')->paginate(9);
+                $products = $products->orderBy('finalPrize', 'desc')->paginate(9);
                 break;
             default:
                 $products->inRandomOrder()->paginate(9);
@@ -41,10 +45,10 @@ class ProductsController extends Controller
                 $products = DB::table('products')->latest()->paginate(9);
                 break;
             case 2:
-                $products = DB::table('products')->orderBy('finalPrize', 'desc')->paginate(9);
+                $products = DB::table('products')->orderBy('finalPrize', 'asc')->paginate(9);
                 break;
             case 3:
-                $products = DB::table('products')->orderBy('finalPrize', 'asc')->paginate(9);
+                $products = DB::table('products')->orderBy('finalPrize', 'desc')->paginate(9);
                 break;
             default:
                 $products = DB::table('products')->inRandomOrder()->paginate(9);
@@ -52,6 +56,7 @@ class ProductsController extends Controller
         } else {
             $products = DB::table('products')->inRandomOrder()->paginate(9);
         }
-        return view('pages.shop', ['products' => $products]);
+        $recentProducts = DB::table('products')->latest()->limit(6)->get();
+        return view('pages.shop', ['products' => $products, 'sort' => $sort, 'search' => $search, 'categories' => $categories, 'recents' => $recentProducts]);
     }
 }

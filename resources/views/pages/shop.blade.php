@@ -25,11 +25,11 @@
         	<div class="col-xl-9 col-lg-8 col-md-12">
             	<div class="shop-options d-sm-flex justify-content-between align-items-center">
                 	<div class="sorting-option">
-                    	<select class="sorting-items" name="category">
-                            <option value="menu_order" selected="selected">Default sorting</option>
-                            <option value="popularity">Sort by popularity</option>
-                            <option value="price">Sort by price: low to high</option>
-                            <option value="price-desc">Sort by price: high to low</option>
+                    	<select class="sorting-items" onchange="window.location.href='/shop/'+this.value+'?'+(window.location.href).split('?')[1]">
+                            <option value="0" @if ($sort == 0) selected='selected' @endif>Default sorting</option>
+                            <option value="1" @if ($sort == 1) selected='selected' @endif>Sort by popularity</option>
+                            <option value="2" @if ($sort == 2) selected='selected' @endif>Sort by price: low to high</option>
+                            <option value="3" @if ($sort == 3) selected='selected' @endif>Sort by price: high to low</option>
                         </select>
                     </div>
                     <div class="showing-items">
@@ -86,11 +86,9 @@
                         </div>
                         <div class="quantity-box-detail">
                         	<ul>
-                            	<li><a href="#">Women<span>(10)</span></a></li>
-                                <li><a href="#">Men<span>(05)</span></a></li>
-                                <li><a href="#">Footwear<span>(15)</span></a></li>
-                                <li><a href="#">Bags And Backpacks<span>(20)</span></a></li>
-                                <li><a href="#">Accessories<span>(07)</span></a></li>
+                                @foreach ($categories as $category)
+                            	<li><a href="/shop/0?searchbox={{ $category -> category }}">{{ $category -> category}}<span>({{ $category -> count }})</span></a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -103,7 +101,7 @@
                             <div class="price_slider_amount">
                                 <div class="slider-values d-flex align-items-center">
                                 	<p>Price</p>
-                                    <input type="text" id="amount" name="price"  placeholder="Add Your Price" />
+                                    <input type="text" id="amount" name="price"  placeholder="Add Your Price"  onchange="alert('hello')"/>
                                 </div>
                             </div>
                         </div>
@@ -113,33 +111,17 @@
                         	<h6>recent Product</h6>
                         </div>
                         <div class="side-recent-product">
+                            @foreach ($recents as $recent)
                         	<div class="cart-prodect d-flex">
                                 <div class="cart-img">
-                                    <img src="/image/recent-product-1.png" alt="recent-product">
+                                    <img src="/{{explode(',', $recent -> images)[0]}}" alt="product-img">
                                 </div>
                                 <div class="cart-product">
-                                    <a href="/product">Ornare sed consequat</a>
-                                    <a href="/product" class="cp-comments"><i class="fa fa-comments"></i> 5 Comments</a>
+                                    <a href="/product/{{ $recent -> id }}">{{ $recent -> name }}</a>
+                                    <a href="/product/{{ $recent -> id }}" class="cp-comments"><i class="fa fa-comments"></i> 5 Comments</a>
                                 </div>
                             </div>
-                            <div class="cart-prodect d-flex">
-                                <div class="cart-img">
-                                    <img src="/image/recent-product-2.png" alt="recent-product">
-                                </div>
-                                <div class="cart-product">
-                                    <a href="/product">Pellentesque posuere</a>
-                                    <a href="/product" class="cp-comments"><i class="fa fa-comments"></i> 5 Comments</a>
-                                </div>
-                            </div>
-                            <div class="cart-prodect d-flex">
-                                <div class="cart-img">
-                                    <img src="/image/recent-product-3.png" alt="recent-product">
-                                </div>
-                                <div class="cart-product">
-                                    <a href="/product">Pellentesque posuere</a>
-                                    <a href="/product" class="cp-comments"><i class="fa fa-comments"></i> 5 Comments</a>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
