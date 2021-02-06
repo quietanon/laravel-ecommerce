@@ -2,7 +2,7 @@
 @section('content')
 
 <!-- Start Breadcrumbs Section -->
-<section class="breadcrumbs-section background_bg" data-img-src="image/cart-breadcrumbs-img.jpg">
+<section class="breadcrumbs-section background_bg" data-img-src="//image/cart-breadcrumbs-img.jpg">
 	<div class="container">
     	<div class="row justify-content-center">
         	<div class="col-md-12">
@@ -42,7 +42,7 @@
                         <tbody>
                         	<tr class="row-2">
                             	<td class="row-close close-1" data-title="product-remove"><a href="#"><i class="ion-close-circled"></i></a></td>
-                            	<td class="row-img"><img src="image/cart-inner-img-1.jpg" alt="cart-img"></td>
+                            	<td class="row-img"><img src="/image/cart-inner-img-1.jpg" alt="cart-img"></td>
                                 <td class="product-name" data-title="Product"><a href="#">Variable product 001</a></td>
                                 <td class="product-price" data-title="Price"><p>₹ 78.00</p></td>
                                 <td class="product-quantity" data-title="Quantity">
@@ -57,7 +57,7 @@
                             </tr>
                             <tr class="row-3">
                             	<td class="row-close close-1" data-title="product-remove"><a href="#"><i class="ion-close-circled"></i></a></td>
-                            	<td class="row-img"><img src="image/cart-inner-img-2.jpg" alt="cart-img"></td>
+                            	<td class="row-img"><img src="/image/cart-inner-img-2.jpg" alt="cart-img"></td>
                                 <td class="product-name" data-title="Product"><a href="#">Ornare sed consequat</a></td>
                                 <td class="product-price" data-title="Price"><p>₹ 81.00</p></td>
                                 <td class="product-quantity" data-title="Quantity">
@@ -76,7 +76,7 @@
                             <tr>
                                 <td colspan="12">
                                     <ul class="table-btn">
-                                        <li><a href="/shop" class="btn btn-secondary"><i class="fa fa-chevron-left"></i>Continue Shopping</a></li>
+                                        <li><a href="/shop/0/0" class="btn btn-secondary"><i class="fa fa-chevron-left"></i>Continue Shopping</a></li>
                                         <li><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i>Update cart</a></li>
                                     </ul>
                                 </td>

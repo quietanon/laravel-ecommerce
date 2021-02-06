@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\BannersController@getBanner');
 Route::get('/product/{id}', 'App\Http\Controllers\ProductsController@getProduct');
-Route::get('/shop', 'App\Http\Controllers\ProductsController@getProducts');
+Route::get('/shop/{search}/{sort}', 'App\Http\Controllers\ProductsController@getProducts');
 
 Route::get('/contact', function () {
     return View::make('pages.contact');

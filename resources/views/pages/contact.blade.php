@@ -2,7 +2,7 @@
 @section('content')
 
 <!-- Start Breadcrumbs Section -->
-<section class="breadcrumbs-section background_bg" data-img-src="image/contact-breadcrumbs-img.jpg">
+<section class="breadcrumbs-section background_bg" data-img-src="/image/contact-breadcrumbs-img.jpg">
 	<div class="container">
     	<div class="row justify-content-center">
         	<div class="col-md-12">

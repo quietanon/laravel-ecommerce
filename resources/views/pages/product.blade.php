@@ -2,7 +2,7 @@
 @section('content')
 
 <!-- Start Breadcrumbs Section -->
-<section class="breadcrumbs-section background_bg" data-img-src="image/pd-breadcrumbs-img.jpg">
+<section class="breadcrumbs-section background_bg" data-img-src="/image/pd-breadcrumbs-img.jpg">
 	<div class="container">
     	<div class="row">
         	<div class="col-md-12">
@@ -142,7 +142,7 @@
                             	<div class="costomer-reviews">
                                 	<div class="costomer-reviews-box">
                                     	<div class="reviews-img">
-                                        	<img src="image/costomer-img.jpg" alt="costomer-img">
+                                        	<img src="/image/costomer-img.jpg" alt="costomer-img">
                                         </div>
                                         <div class="reviews-text">
                                         	<p class="reviewer-name">admin</p>
@@ -152,7 +152,7 @@
                                     </div>
                                     <div class="costomer-reviews-box">
                                     	<div class="reviews-img">
-                                        	<img src="image/costomer-img.jpg" alt="costomer-img">
+                                        	<img src="/image/costomer-img.jpg" alt="costomer-img">
                                         </div>
                                         <div class="reviews-text">
                                         	<p class="reviewer-name">admin</p>
@@ -208,7 +208,7 @@
 					<div class="item">
                     	<div class="product-box common-cart-box">
                         	<div class="product-img common-cart-img">
-                            	<img src="image/product-img-1.jpg" alt="product-img">
+                            	<img src="/image/product-img-1.jpg" alt="product-img">
                                 <div class="hover-option">
                                 	<div class="add-cart-btn">
                                     	<a href="#" class="btn btn-primary">Add To Cart</a>

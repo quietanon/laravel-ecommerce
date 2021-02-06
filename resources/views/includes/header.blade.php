@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Favicon Icon Css -->
-<link rel="icon" type="/image/png" sizes="32x32" href="image/favicon-32x32.png">
+<link rel="icon" type="/image/png" sizes="32x32" href="/image/favicon-32x32.png">
 <!-- Animation CSS -->
 <link rel="stylesheet" href="/css/animate.css">
 <!-- Animation CSS -->
@@ -193,7 +193,7 @@ document.write("<sc"+"ript src='" +scJsHost +"statcounter.com/counter/counter.js
             	<div class="col-md-12">
                 	<nav class="navbar navbar-expand-lg navbar-light">
                     	<div class="header-logo">
-                        	<a href="#"><img src="image/logo.png" alt="logo"></a>
+                        	<a href="#"><img src="/image/logo.png" alt="logo"></a>
                         </div>
                       	<div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav">
@@ -205,7 +205,7 @@ document.write("<sc"+"ript src='" +scJsHost +"statcounter.com/counter/counter.js
                                 </li>
                                 <li>
                                 <li class="nav-item">
-                                	<a class="nav-link" href="/shop">Shop</a>
+                                	<a class="nav-link" href="/shop/0/0">Shop</a>
                                 </li>
                                 <li class="nav-item">
                                 	<a class="nav-link" href="/contact">Contact</a>

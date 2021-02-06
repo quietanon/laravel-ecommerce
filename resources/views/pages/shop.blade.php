@@ -1,7 +1,7 @@
 @extends('layouts/default')
 @section('content')
 <!-- Start Breadcrumbs Section -->
-<section class="breadcrumbs-section background_bg" data-img-src="image/shop-breadcrumbs-img.jpg">
+<section class="breadcrumbs-section background_bg" data-img-src="/image/shop-breadcrumbs-img.jpg">
 	<div class="container">
     	<div class="row">
         	<div class="col-md-12">
@@ -28,18 +28,17 @@
                     	<select class="sorting-items" name="category">
                             <option value="menu_order" selected="selected">Default sorting</option>
                             <option value="popularity">Sort by popularity</option>
-                            <option value="date">Sort by newness</option>
                             <option value="price">Sort by price: low to high</option>
                             <option value="price-desc">Sort by price: high to low</option>
                         </select>
                     </div>
                     <div class="showing-items">
-                        <p>Showing 1–9 of {{ $count }} results</p>
+                        <p>Showing {{ $products -> firstItem() }}–{{ $products -> lastItem() }} of {{ $products -> total() }} results</p>
                     </div>
                     <div class="shop-list_grid">
                         <div class="list_grid-btns">
-                        	<a href="javascript:void(0)" class="list-view"><i class="ion-navicon-round"></i></a>
                     		<a href="javascript:void(0)" class="grid-view on"><i class="ion-grid"></i></a>
+                        	<a href="javascript:void(0)" class="list-view"><i class="ion-navicon-round"></i></a>
                         </div>
                     </div>
                 </div>
@@ -52,7 +51,6 @@
                                 <div class="hover-option">
                                 	<div class="add-cart-btn">
                                     	<a href="#" class="btn btn-primary">Add To Cart</a>
-a
                                     </div>
                                 </div>
                             </div>
@@ -70,15 +68,11 @@ a
                     </div>
                     @endforeach
                 </div>
-                <
                 <div class="row">
                     <div class="col-md-12">
                         <nav>
                             <ul class="pagination justify-content-center">
-                                @for($counter = 1; $counter <= $page; $counter++)
-                                    <li><a href="#">{{ $counter }}</a></li>
-                                @endfor
-                                <li><a href="#" aria-label="Next"><i class="fa fa-angle-right"></i></a></li>
+                                {{ $products -> links() }}
                             </ul>
                         </nav>
                     </div>
@@ -121,7 +115,7 @@ a
                         <div class="side-recent-product">
                         	<div class="cart-prodect d-flex">
                                 <div class="cart-img">
-                                    <img src="image/recent-product-1.png" alt="recent-product">
+                                    <img src="/image/recent-product-1.png" alt="recent-product">
                                 </div>
                                 <div class="cart-product">
                                     <a href="/product">Ornare sed consequat</a>
@@ -130,7 +124,7 @@ a
                             </div>
                             <div class="cart-prodect d-flex">
                                 <div class="cart-img">
-                                    <img src="image/recent-product-2.png" alt="recent-product">
+                                    <img src="/image/recent-product-2.png" alt="recent-product">
                                 </div>
                                 <div class="cart-product">
                                     <a href="/product">Pellentesque posuere</a>
@@ -139,7 +133,7 @@ a
                             </div>
                             <div class="cart-prodect d-flex">
                                 <div class="cart-img">
-                                    <img src="image/recent-product-3.png" alt="recent-product">
+                                    <img src="/image/recent-product-3.png" alt="recent-product">
                                 </div>
                                 <div class="cart-product">
                                     <a href="/product">Pellentesque posuere</a>

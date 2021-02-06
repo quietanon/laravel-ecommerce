@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
 <!-- Start Breadcrumbs Section -->
-<section class="breadcrumbs-section background_bg" data-img-src="image/aboutus-breadcrumbs-img.jpg">
+<section class="breadcrumbs-section background_bg" data-img-src="/image/aboutus-breadcrumbs-img.jpg">
 	<div class="container">
     	<div class="row">
         	<div class="col-md-12">
@@ -24,7 +24,7 @@
     	<div class="row">
         	<div class="col-md-6">
             	<div class="about-info-img">
-                	<img src="image/aboutus-info-img.jpg" alt="about-img">
+                	<img src="/image/aboutus-info-img.jpg" alt="about-img">
                 </div>
             </div>
             <div class="col-md-6">
@@ -43,7 +43,7 @@
 <!-- End Contact Detail Section -->
 
 <!-- Start Contact Detail Section -->
-<section class="counters-section background_bg" data-img-src="image/counter-bc.jpg">
+<section class="counters-section background_bg" data-img-src="/image/counter-bc.jpg">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -109,30 +109,30 @@
             	<div class="carousel_slide1 review-slider bg_red same-nav owl-carousel owl-theme owl-loaded owl-drag">
                 	<div class="item review-box">
                     	<div class="client-img">
-                        	<img src="image/client-img-1.png" alt="client-img">
+                        	<img src="/image/client-img-1.png" alt="client-img">
                         </div>
                         <div class="client-text">
-                        	<div class="quote-icon"><img src="image/quote-icon.png" alt="quote-icon"></div>
+                        	<div class="quote-icon"><img src="/image/quote-icon.png" alt="quote-icon"></div>
                             <p>Maecenas semper aliquam massa. Praesent pharetra semvitae nisi eleifend molestie.Aliquam molestie scelerisque ultricies. Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor dictum ornare.</p>
                             <a href="#">- William Genske</a>
                         </div>
                     </div>
                     <div class="item review-box">
                     	<div class="client-img">
-                        	<img src="image/client-img-1.png" alt="client-img">
+                        	<img src="/image/client-img-1.png" alt="client-img">
                         </div>
                         <div class="client-text">
-                        	<div class="quote-icon"><img src="image/quote-icon.png" alt="quote-icon"></div>
+                        	<div class="quote-icon"><img src="/image/quote-icon.png" alt="quote-icon"></div>
                             <p>Maecenas semper aliquam massa. Praesent pharetra semvitae nisi eleifend molestie.Aliquam molestie scelerisque ultricies. Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor dictum ornare.</p>
                             <a href="#">- William Genske</a>
                         </div>
                     </div>
                     <div class="item review-box">
                     	<div class="client-img">
-                        	<img src="image/client-img-1.png" alt="client-img">
+                        	<img src="/image/client-img-1.png" alt="client-img">
                         </div>
                         <div class="client-text">
-                        	<div class="quote-icon"><img src="image/quote-icon.png" alt="quote-icon"></div>
+                        	<div class="quote-icon"><img src="/image/quote-icon.png" alt="quote-icon"></div>
                             <p>Maecenas semper aliquam massa. Praesent pharetra semvitae nisi eleifend molestie.Aliquam molestie scelerisque ultricies. Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor dictum ornare.</p>
                             <a href="#">- William Genske</a>
                         </div>
