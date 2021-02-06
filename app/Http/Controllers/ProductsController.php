@@ -18,7 +18,6 @@ class ProductsController extends Controller
         $products = DB::table('products')->paginate(9);
         $count = DB::table('products')->count();
         $pages = $count % 9 === 0 ? $count / 9 : ($count / 9) + 1;
-        $gebrr
         return view('pages.shop', ['products' => $products, 'count' => $count, 'page' => $pages]);
     }
 }
