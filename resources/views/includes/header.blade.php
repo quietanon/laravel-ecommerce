@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -125,41 +124,37 @@
                             <a href="#">
                                 <div class="cart-icon">
                                     <img src="/image/cart-icon.png" alt="cart-icon">
-                                    <span>16</span>
+                                    <span>{{ $count }}</span>
                                 </div>
-                                ₹42.00<i class="fa fa-angle-down"></i>
+                            @if ($total !== 0)
+                                ₹{{ $total }}<i class="fa fa-angle-down"></i>
+                            @endif
                             </a>
+                            @if ($total !== 0)
                             <div class="cart-box">
                                 <div class="cart-info">
+                                @foreach ($headercarts as $cart)
                                 <div class="cart-prodect d-flex">
                                     <div class="cart-img">
-                                        <img src="/image/cart-img-1.png" alt="cart-img">
+                                    <img src="/{{explode(',', $cart -> images)[0]}}" width="50px" heigth="100px" alt="product-img">
                                     </div>
                                     <div class="cart-product">
-                                        <a href="#">Ornare sed consequat</a>
-                                        <p>₹ 81.00</p>
+                                        <a href="/product/{{ $cart -> product_id }}">{{ $cart -> name }}</a>
+                                        <p>₹ {{ $cart -> finalPrize * $cart -> quantity }}</p>
                                     </div>
-                                    <a href="#" class="close-icon d-flex align-items-center"><i class="ion-close"></i></a>
+                                    <a href="/removefromcart/{{ $cart -> id }}" class="close-icon d-flex align-items-center"><i class="ion-close"></i></a>
                                 </div>
-                                <div class="cart-prodect d-flex">
-                                    <div class="cart-img">
-                                        <img src="/image/cart-img-2.png" alt="cart-img">
-                                    </div>
-                                    <div class="cart-product">
-                                        <a href="#">Pellentesque posuere</a>
-                                        <p>₹ 80.00</p>
-                                    </div>
-                                    <a href="#" class="close-icon d-flex align-items-center"><i class="ion-close"></i></a>
-                                </div>
+                                @endforeach
                             </div>
                                 <div class="price-prodect d-flex align-items-center justify-content-between">
                                 <p class="total">total</p>
-                                <p class="total-price">₹ 161.00</p>
+                                <p class="total-price">₹ {{ $total }}</p>
                             </div>
                                 <div class="cart-btn">
-                                <a href="/cart" class="btn btn-primary">View Cart</a>
+                                    <a href="/cart" class="btn btn-primary">View Cart</a>
+                                </div>
                             </div>
-                            </div>
+                            @endif
                     	</div>
                         	<div class="d-lg-none mm_icon">
                                 <div class="form-captions" id="search">

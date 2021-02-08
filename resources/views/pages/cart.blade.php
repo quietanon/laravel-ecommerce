@@ -53,7 +53,7 @@
                                 <td class="product-price" data-title="Price"><p>₹ {{ $cart -> finalPrize }}</p></td>
                                 <td class="product-quantity" data-title="Quantity">
                                 	<div class="quantity_filter">
-                            <input class="quantity-number qty" style="-webkit-appearance: none;margin=0;-moz-appearance: textfield;" type="number" name="quantity" value="{{ $cart -> quantity }}" min="0" max="{{ $cart -> availability }}">
+                                        <input class="quantity-number qty" onchange="window.location.href='/updatecart/{{$cart -> id}}/'+this.value" style="-webkit-appearance: none;margin=0;-moz-appearance: textfield;" type="number" value="{{ $cart -> quantity }}" min="0" max="{{ $cart -> availability }}">
                                		</div>
                                 </td>
                                 <td class="product-total" data-title="Subprice"><p>₹ {{ ($cart -> finalPrize) * ($cart -> quantity) }}</p></td>
@@ -66,7 +66,6 @@
                                 <td colspan="12">
                                     <ul class="table-btn">
                                         <li><a href="/shop/0" class="btn btn-secondary"><i class="fa fa-chevron-left"></i>Continue Shopping</a></li>
-                                        <li><a href="/updateCart" class="btn btn-primary"><i class="fa fa-refresh"></i>Update Cart</a></li>
                                         <li><a href="/checkout" class="btn btn-secondary">Proceed To checkout <i class="fa fa-chevron-right"></i></a></li>
                                     </ul>
                                 </td>

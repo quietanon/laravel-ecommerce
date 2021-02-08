@@ -17,10 +17,20 @@ class CartsController extends Controller
             ->where('active', 'true')
             ->get();
 
+        if($current -> count() === 0) {
+            return redirect()->intended('/');
+        }
+
         return view('pages.cart', ['carts' => $current]);
     }
 
     public function addToCart($id) {
+        if (!auth() -> check()) {
+            return redirect()->back()->with([
+                'alert' => 'Please login to Add into Cart!'
+            ]);
+        }
+
         $checkExisting = DB::table('carts')
             ->where('user_id', auth()->user()->id)
             ->where('product_id', $id)

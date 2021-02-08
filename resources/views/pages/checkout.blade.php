@@ -92,27 +92,23 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach($carts as $cart)
                                                         <tr class="row-2">
-                                                            <td class="product-name">Variable product 001</td>
-                                                            <td class="product-price">₹ 78.00</td>
-                                                            <td class="product-quantity">2</td>
-                                                            <td class="product-subtotal">₹ 156.00</td>
+                                                            <td class="product-name">{{ $cart -> name }}</td>
+                                                            <td class="product-price">₹ {{ $cart -> finalPrize }}</td>
+                                                            <td class="product-quantity">{{ $cart -> quantity }}</td>
+                                                            <td class="product-subtotal">₹ {{ $cart -> finalPrize * $cart -> quantity }}</td>
                                                         </tr>
-                                                        <tr class="row-3">
-                                                            <td class="product-name">Ornare sed consequat</td>
-                                                            <td class="product-price">₹ 81.00</td>
-                                                            <td class="product-quantity">1</td>
-                                                            <td class="product-subtotal">₹ 81.00</td>
-                                                        </tr>
+                                                        @endforeach
                                                     </tbody>
                                                     <tfoot>
                                                         <tr class="row-4">
                                                             <td class="text-left" colspan="3">Cart Subtotal</td>
-                                                            <td class="pr_subtotal">₹237.00</td>
+                                                            <td class="pr_subtotal">₹ {{ $total }}</td>
                                                         </tr>
                                                         <tr class="row-6">
-                                                            <td class="text-left" colspan="3">ORder Total</td>
-                                                            <td class="product-subtotal">₹232.00</td>
+                                                            <td class="text-left" colspan="3">Order Total(with shipping)</td>
+                                                            <td class="product-subtotal">₹ {{ $total + $shipping -> charge }}</td>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
@@ -136,13 +132,13 @@
                     </div>
                     <div class="ci-caption">
                         <ul>
-                        	<li>Subtotal <span>₹237.00</span></li>
-                            <li>Shipping <span>Free</span></li>
+                        	<li>Subtotal <span>₹ {{ $total }}</span></li>
+                            <li>Shipping <span>₹ {{ $shipping -> charge }}</span></li>
                         </ul>
                     </div>
                     <div class="ci-btn">
                         <ul>
-                        	<li>Total Order<span>₹232.00</span></li>
+                        	<li>Total Order<span>₹ {{ $total + $shipping -> charge }}</span></li>
                         </ul>
                     </div>
                 </div>

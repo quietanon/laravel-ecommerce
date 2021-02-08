@@ -17,7 +17,19 @@ class CheckoutController extends Controller
             ]);
         }
         $user = DB::table('users')->where('id', auth()->user()->id)->first();
-        return view('pages.checkout', ['user' => $user]);
+        $current = DB::table('carts')
+            ->join('products', 'products.id', '=', 'carts.product_id')
+            ->select('products.name', 'products.finalPrize', 'products.images', 'products.availability', 'carts.quantity', 'carts.id', 'carts.product_id')
+            ->where('user_id', auth()->user()->id)
+            ->where('active', 'true')
+            ->get();
+
+        $total = 0;
+        foreach($current as $single) {
+            $total = $total + ($single->finalPrize * $single->quantity);
+        }
+        $shipping = DB::table('shippings')->first();
+        return view('pages.checkout', ['user' => $user, 'carts' => $current, 'total' => $total, 'shipping' => $shipping]);
     }
 
     public function place() {
@@ -33,8 +45,38 @@ class CheckoutController extends Controller
             ->id)
             ->update(['mobile' => $mobile,'address' => $address, 'city' => $city, 'state' => $state, 'pincode' => $pincode]);
 
-            return redirect()->intended('/index')->with([
-                'alert' => 'Your order has been placed successfully!!'
+        $shipping = DB::table('shippings')->first();
+
+        $currents = DB::table('carts')
+            ->join('products', 'products.id', '=', 'carts.product_id')
+            ->select('products.name', 'products.finalPrize', 'products.images', 'products.availability', 'carts.quantity', 'carts.id', 'carts.product_id')
+            ->where('user_id', auth()->user()->id)
+            ->where('active', 'true')
+            ->get();
+
+        $order = DB::table('place_orders')->insertGetId([
+            'user_id' => auth()->user()->id,
+            'shipping' => $shipping -> charge,
+            'accepted' => 'false',
+            'created_at' =>  date('Y-m-d H:i:s')
+        ]);
+
+
+        foreach ($currents as $current) {
+            DB::table('orders')->insert([
+                'place_order_id' => $order,
+                'product_id' => $current -> product_id,
+                'quantity' => $current -> quantity
             ]);
+
+            DB::table('carts')
+                ->where('id', $current -> id)
+                ->update([
+                    'active' => 'false'
+            ]);
+        }
+        return redirect()->intended('/index')->with([
+            'alert' => 'Your order has been placed successfully!!'
+        ]);
     }
 }

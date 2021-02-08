@@ -32,6 +32,8 @@ Route::get('/removefromcart/{id}', 'App\Http\Controllers\CartsController@removeF
 Route::get('/updatecart/{id}/{quantity}', 'App\Http\Controllers\CartsController@updateCart');
 Route::get('/cart', 'App\Http\Controllers\CartsController@index');
 
+Route::get('/suscribe', 'App\Http\Controllers\SuscribeController@suscribe');
+
 Route::get('/contact', function () {
     return View::make('pages.contact');
 });

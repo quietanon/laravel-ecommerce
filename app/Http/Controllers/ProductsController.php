@@ -75,7 +75,7 @@ class ProductsController extends Controller
             'review' => $_GET['review'],
             'user_id' => auth()->user()->id,
             'product_id' => $id,
-            "created_at" =>  date('Y-m-d H:i:s'),
+            'created_at' =>  date('Y-m-d H:i:s'),
         ]);
         return redirect()->back();
     }
