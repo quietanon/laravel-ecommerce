@@ -10,7 +10,7 @@
                 	<h1>Product Detail</h1>
                     <ul class="breadcrumb justify-content-center">
                     	<li><a href="/index">home</a></li>
-                        <li><a href="#">Shop</a></li>
+                        <li><a href="/shop/0">Shop</a></li>
                         <li><span>Product Detail</span></li>
                     </ul>
                 </div>
@@ -52,11 +52,11 @@
                         <p>Quantity:</p>
                         <div class="input-group">
                         	<input type="button" value="-" class="minus">
-                            <input class="quantity-number qty" type="text" value="1" min="1" max="10">
+                            <input class="quantity-number qty" type="text" name="quantity" value="1" min="1" max="10">
                             <input type="button" value="+" class="plus">
                         </div>
                         <div class="quickview-cart-btn">
-                            <a href="#" class="btn btn-primary"><img src="/image/cart-icon-1.png" alt="cart-icon-1"> Add To Cart</a>
+                            <a href="/addtocart/{{ $product -> id }}" class="btn btn-primary"><img src="/image/cart-icon-1.png" alt="cart-icon-1"> Add To Cart</a>
                         </div>
                     </div>
                     <div class="box-social-like d-sm-flex justify-content-between">
@@ -89,7 +89,7 @@
                         	<a class="nav-link" id="ai-tab" data-toggle="tab" href="#ai" role="tab" aria-controls="ai" aria-selected="false">ADDITIONAL INFORMATION</a>
                         </li>
                         <li class="nav-item">
-                        	<a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">REVIEWS (2)</a>
+                        	<a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">REVIEWS ({{ $reviewCount }})</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
@@ -140,42 +140,26 @@
                             </div>
                             <div class="tab-caption">
                             	<div class="costomer-reviews">
+                                    @foreach ($reviews as $review)
                                 	<div class="costomer-reviews-box">
-                                    	<div class="reviews-img">
-                                        	<img src="/image/costomer-img.jpg" alt="costomer-img">
-                                        </div>
                                         <div class="reviews-text">
-                                        	<p class="reviewer-name">admin</p>
-                                            <span class="reviews-date">September 13, 2017</span>
-                                            <p class="reviewer-text">24/7 helpdesk is also available. I Love it!</p>
+                                        	<p class="reviewer-name">{{ $review -> name }}</p>
+                                            <span class="reviews-date">{{ $review -> created_at }}</span>
+                                            <p class="reviewer-text">{{ $review -> review }}</p>
                                         </div>
                                     </div>
-                                    <div class="costomer-reviews-box">
-                                    	<div class="reviews-img">
-                                        	<img src="/image/costomer-img.jpg" alt="costomer-img">
-                                        </div>
-                                        <div class="reviews-text">
-                                        	<p class="reviewer-name">admin</p>
-                                            <span class="reviews-date">September 13, 2017</span>
-                                            <p class="reviewer-text">24/7 helpdesk is also available. I Love it!</p>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
+                            @if(auth()->check())
                             <div class="tab-caption">
                             	<div class="add-review">
                                 	<div class="tab-title">
                                         <h6>Add a review</h6>
                                     </div>
-                                    <form class="add-review-form">
-                                    	<div class="input-1">
-                                    		<input required class="form-control" placeholder="Enter Your Name" value="" type="text">
-                                        </div>
-                                        <div class="input-2">
-                                    		<input required class="form-control" placeholder="Enter Your Email" value="" type="email">
-                                        </div>
+                                    <form class="add-review-form" method="get" action="/addreview/{{ $product -> id }}">
                                         <div class="input-3">
-                                    		<textarea required rows="6" class="form-control" placeholder="Enter Your Review"></textarea>
+                                    		<textarea required rows="6" class="form-control" name="review" placeholder="Enter Your Review"></textarea>
                                         </div>
                                         <div class="input-btn">
                                         	<button type="submit" class="btn btn-secondary">Submit</button>
@@ -183,6 +167,9 @@
                                     </form>
                                 </div>
                             </div>
+                            @else
+                            <div class="tab-caption">Please login to add review!</div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -205,25 +192,24 @@
         <div class="row">
 			<div class="col-12">
 				<div class="products-slider4 same-nav owl-carousel owl-theme" data-margin="30" data-dots="false">
+                        @foreach($recentProducts as $recentProduct)
 					<div class="item">
                     	<div class="product-box common-cart-box">
                         	<div class="product-img common-cart-img">
-                            	<img src="/image/product-img-1.jpg" alt="product-img">
+                                <img src="/{{explode(',', $recentProduct -> images)[0]}}" alt="product-img">
                                 <div class="hover-option">
                                 	<div class="add-cart-btn">
                                     	<a href="#" class="btn btn-primary">Add To Cart</a>
                                     </div>
-                                	<ul class="hover-icon">
-                                        <li><a href="#test-popup3" class="quickview-popup-link"><i class="fa fa-eye"></i></a></li>
-                                    </ul>
                                 </div>
                             </div>
                             <div class="product-info common-cart-info text-center">
-                            	<a href="/product" class="cart-name">Variable product 001</a>
-                                <p class="cart-price"><del>₹ 90.00</del>₹ 78.00</p>
+                                <a href="/product/{{$recentProduct -> id}}" class="cart-name">{{ $recentProduct -> name}}</a>
+                                <p class="cart-price"><del>₹ {{ $recentProduct -> prize }}</del>₹ ${{ $recentProduct -> finalPrize }}</p>
                             </div>
                         </div>
                     </div>
+                        @endforeach
                 </div>
             </div>
         </div>

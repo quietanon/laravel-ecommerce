@@ -13,7 +13,15 @@ class ProductsController extends Controller
 {
     public function getProduct($id) {
         $product = DB::table('products')->where('id', $id)->first();
-        return view('pages.product', ['product' => $product]);
+        $reviews = DB::table('reviews')
+            ->join('users', 'users.id', '=', 'reviews.user_id')
+            ->select('users.name', 'reviews.*')
+            ->where('product_id', $id)
+            ->get();
+        $reviewCount = $reviews->count();
+        $recentProducts = DB::table('products')->latest()->limit(4)->get();
+
+        return view('pages.product', ['product' => $product, 'reviews' => $reviews, 'reviewCount' => $reviewCount, 'recentProducts' => $recentProducts]);
     }
 
     public function getProducts($sort) {
@@ -56,7 +64,19 @@ class ProductsController extends Controller
         } else {
             $products = DB::table('products')->inRandomOrder()->paginate(9);
         }
+
         $recentProducts = DB::table('products')->latest()->limit(6)->get();
+
         return view('pages.shop', ['products' => $products, 'sort' => $sort, 'search' => $search, 'categories' => $categories, 'recents' => $recentProducts]);
+    }
+
+    public function addReview($id) {
+        DB::table('reviews')->insert([
+            'review' => $_GET['review'],
+            'user_id' => auth()->user()->id,
+            'product_id' => $id,
+            "created_at" =>  date('Y-m-d H:i:s'),
+        ]);
+        return redirect()->back();
     }
 }

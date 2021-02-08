@@ -14,8 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'App\Http\Controllers\BannersController@getBanner');
+Route::get('/index', 'App\Http\Controllers\BannersController@getBanner');
+
 Route::get('/product/{id}', 'App\Http\Controllers\ProductsController@getProduct');
+Route::get('/addreview/{id}', 'App\Http\Controllers\ProductsController@addReview');
+
 Route::get('/shop/{sort}', 'App\Http\Controllers\ProductsController@getProducts');
+
+Route::get('/login', 'App\Http\Controllers\UsersController@login');
+Route::get('/register', 'App\Http\Controllers\UsersController@register');
+Route::get('/logout', 'App\Http\Controllers\UsersController@logout');
+
+Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index');
+Route::get('/place', 'App\Http\Controllers\CheckoutController@place');
+
+Route::get('/addtocart/{id}', 'App\Http\Controllers\CartsController@addToCart');
 
 Route::get('/contact', function () {
     return View::make('pages.contact');
@@ -31,8 +44,4 @@ Route::get('/cart', function () {
 
 Route::get('/account', function () {
     return View::make('pages.account');
-});
-
-Route::get('/checkout', function () {
-    return View::make('pages.checkout');
 });

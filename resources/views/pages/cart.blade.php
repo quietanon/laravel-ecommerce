@@ -23,6 +23,11 @@
 
 
 <!-- Start Cart Section -->
+@if (session('alert'))
+    <div class="alert alert-danger">
+        {{ session('alert') }}
+    </div>
+@endif
 <section class="cart-section pt_large">
 	<div class="container">
     	<div class="row">
@@ -77,7 +82,7 @@
                                 <td colspan="12">
                                     <ul class="table-btn">
                                         <li><a href="/shop/0" class="btn btn-secondary"><i class="fa fa-chevron-left"></i>Continue Shopping</a></li>
-                                        <li><a href="#" class="btn btn-primary"><i class="fa fa-refresh"></i>Update cart</a></li>
+                                        <li><a href="/checkout" class="btn btn-primary"><i class="fa fa-refresh"></i>Checkout</a></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -89,46 +94,4 @@
     </div>
 </section>
 <!-- End Cart Section -->
-
-
-<!-- Start Cart Box Section -->
-<section class="cart-box-section pb_large">
-	<div class="container">
-    	<div class="row justify-content-between">
-        	<div class="col-lg-4 col-md-6">
-            	<div class="cart-inner-box box-1 text-center">
-                	<div class="ci-title">
-                    	<h6>Promotional code</h6>
-                    </div>
-                    <div class="ci-caption">
-                    	<p>Enter Your Coupon Code If you have one</p>
-                        <form>
-                        	<input required="" class="form-control" type="text" placeholder="Coupon Code">
-                            <button class="btn btn-secondary" type="submit">Apply Coupon Code</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-            	<div class="cart-inner-box box-2 text-center">
-                	<div class="ci-title">
-                    	<h6>Cart Total</h6>
-                    </div>
-                    <div class="ci-caption">
-                        <ul>
-                        	<li>Subtotal <span>₹237.00</span></li>
-                            <li>Total <span>₹237.00</span></li>
-
-                        </ul>
-                    </div>
-                    <div class="ci-btn">
-                        <a href="/checkout" class="btn btn-primary btn-block rounded-0">Proceed to Checkout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Cart Box Section -->
-
 @stop

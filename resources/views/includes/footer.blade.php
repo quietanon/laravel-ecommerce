@@ -143,8 +143,6 @@
 <script src="/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- Magnific Popup js -->
 <script src="/js/jquery.magnific-popup.min.js" type="text/javascript"></script>
-<!-- Map js -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7TypZFTl4Z3gVtikNOdGSfNTpnmq-ahQ"  type="text/javascript"></script>
 <!-- Owl js -->
 <script src="/js/owl.carousel.min.js" type="text/javascript"></script>
 <!-- Countdown js -->

@@ -28,6 +28,11 @@
     </div>
 </section>
 <!-- Start Popular Products Section -->
+@if (session('alert'))
+    <div class="alert alert-success">
+        {{ session('alert') }}
+    </div>
+@endif
 <section class="popular-products pb-0">
 	<div class="container">
     	<div class="row">
