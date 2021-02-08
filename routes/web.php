@@ -18,7 +18,6 @@ Route::get('/index', 'App\Http\Controllers\BannersController@getBanner');
 
 Route::get('/product/{id}', 'App\Http\Controllers\ProductsController@getProduct');
 Route::get('/addreview/{id}', 'App\Http\Controllers\ProductsController@addReview');
-
 Route::get('/shop/{sort}', 'App\Http\Controllers\ProductsController@getProducts');
 
 Route::get('/login', 'App\Http\Controllers\UsersController@login');
@@ -29,6 +28,9 @@ Route::get('/checkout', 'App\Http\Controllers\CheckoutController@index');
 Route::get('/place', 'App\Http\Controllers\CheckoutController@place');
 
 Route::get('/addtocart/{id}', 'App\Http\Controllers\CartsController@addToCart');
+Route::get('/removefromcart/{id}', 'App\Http\Controllers\CartsController@removeFromCart');
+Route::get('/updatecart/{id}/{quantity}', 'App\Http\Controllers\CartsController@updateCart');
+Route::get('/cart', 'App\Http\Controllers\CartsController@index');
 
 Route::get('/contact', function () {
     return View::make('pages.contact');
@@ -36,10 +38,6 @@ Route::get('/contact', function () {
 
 Route::get('/about', function () {
     return View::make('pages.about');
-});
-
-Route::get('/cart', function () {
-    return View::make('pages.cart');
 });
 
 Route::get('/account', function () {

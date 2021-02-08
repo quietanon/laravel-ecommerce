@@ -49,9 +49,12 @@
                     <div class="product-img common-cart-img">
                         <img src="/{{explode(',', $product -> images)[0]}}" alt="product-img">
                         <div class="hover-option">
-                            <div class="add-cart-btn">
-                                <a href="#" class="btn btn-primary">Add To Cart</a>
-                            </div>
+                                <form action="/addtocart/{{ $product -> id }}">
+                                	<div class="add-cart-btn">
+                                    <input type="hidden" name="quantity" value="1" />
+                            <button type="submit" @if(($product -> availability) == 0) disabled="" @endif class="btn btn-primary">Add To Cart</button>
+                                    </div>
+                                </form>
                         </div>
                     </div>
                     <div class="product-info common-cart-info text-center">

@@ -21,6 +21,12 @@
 <!-- End Header Section -->
 
 <!-- Start Product Detail Section -->
+@if (session('alert'))
+    <div class="alert alert-success">
+        {{ session('alert') }}
+    </div>
+@endif
+
 <section class="products-detail-section pt_large">
 	<div class="container">
     	<div class="row">
@@ -48,17 +54,19 @@
                     <h3 class="box-price"><del>₹ {{ $product -> prize }}</del>₹ {{ $product -> finalPrize }}</h3>
                     <p class="box-text">{{ $product -> discription }}</p>
                     <p class="stock">Availability: <span>@if ($product -> availability > 0) In Stock @else Not Available @endif</span></p>
+                    <form method="get" action="/addtocart/{{ $product -> id }}">
                     <div class="quantity-box">
                         <p>Quantity:</p>
                         <div class="input-group">
                         	<input type="button" value="-" class="minus">
-                            <input class="quantity-number qty" type="text" name="quantity" value="1" min="1" max="10">
+                            <input class="quantity-number qty" style="-webkit-appearance: none;margin=0;-moz-appearance: textfield;" type="number" name="quantity" value="{{ $product -> availability == 0? 0:1 }}" min="0" max="{{ $product -> availability }}">
                             <input type="button" value="+" class="plus">
                         </div>
                         <div class="quickview-cart-btn">
-                            <a href="/addtocart/{{ $product -> id }}" class="btn btn-primary"><img src="/image/cart-icon-1.png" alt="cart-icon-1"> Add To Cart</a>
+                            <button type="submit" @if(($product -> availability) == 0) disabled="" @endif class="btn btn-primary"><img src="/image/cart-icon-1.png" alt="cart-icon-1"> Add To Cart</button>
                         </div>
                     </div>
+                    </form>
                     <div class="box-social-like d-sm-flex justify-content-between">
                         <ul class="hover-icon box-social">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -198,9 +206,12 @@
                         	<div class="product-img common-cart-img">
                                 <img src="/{{explode(',', $recentProduct -> images)[0]}}" alt="product-img">
                                 <div class="hover-option">
+                                <form action="/addtocart/{{ $product -> id }}">
                                 	<div class="add-cart-btn">
-                                    	<a href="#" class="btn btn-primary">Add To Cart</a>
+                                    <input type="hidden" name="quantity" value="1" />
+                            <button type="submit" @if(($product -> availability) == 0) disabled="" @endif class="btn btn-primary">Add To Cart</button>
                                     </div>
+                                </form>
                                 </div>
                             </div>
                             <div class="product-info common-cart-info text-center">

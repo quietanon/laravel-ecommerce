@@ -24,7 +24,7 @@
 
 <!-- Start Cart Section -->
 @if (session('alert'))
-    <div class="alert alert-danger">
+    <div class="alert alert-success">
         {{ session('alert') }}
     </div>
 @endif
@@ -45,44 +45,29 @@
                             </tr>
                         </thead>
                         <tbody>
+                                @foreach ($carts as $cart)
                         	<tr class="row-2">
                             	<td class="row-close close-1" data-title="product-remove"><a href="#"><i class="ion-close-circled"></i></a></td>
-                            	<td class="row-img"><img src="/image/cart-inner-img-1.jpg" alt="cart-img"></td>
-                                <td class="product-name" data-title="Product"><a href="#">Variable product 001</a></td>
-                                <td class="product-price" data-title="Price"><p>₹ 78.00</p></td>
+                            	<td class="row-img"><img src="/{{explode(',', $cart -> images)[0]}}" width="50px" heigth="100px" alt="product-img"></td>
+                                <td class="product-name" data-title="Product"><a href="/product/{{ $cart -> product_id }}">{{ $cart -> name }}</a></td>
+                                <td class="product-price" data-title="Price"><p>₹ {{ $cart -> finalPrize }}</p></td>
                                 <td class="product-quantity" data-title="Quantity">
                                 	<div class="quantity_filter">
-                                        <input type="button" value="-" class="minus">
-                                        <input class="quantity-number qty" type="text" value="2" min="1" max="10">
-                                        <input type="button" value="+" class="plus">
+                            <input class="quantity-number qty" style="-webkit-appearance: none;margin=0;-moz-appearance: textfield;" type="number" name="quantity" value="{{ $cart -> quantity }}" min="0" max="{{ $cart -> availability }}">
                                		</div>
                                 </td>
-                                <td class="product-total" data-title="Subprice"><p>₹ 156.00</p></td>
-                                <td class="row-close close-2" data-title="product-remove"><a href="#"><i class="ion-close-circled"></i></a></td>
+                                <td class="product-total" data-title="Subprice"><p>₹ {{ ($cart -> finalPrize) * ($cart -> quantity) }}</p></td>
+                                <td class="row-close close-2" data-title="product-remove"><a href="/removefromcart/{{ $cart -> id }}"><i class="ion-close-circled"></i></a></td>
                             </tr>
-                            <tr class="row-3">
-                            	<td class="row-close close-1" data-title="product-remove"><a href="#"><i class="ion-close-circled"></i></a></td>
-                            	<td class="row-img"><img src="/image/cart-inner-img-2.jpg" alt="cart-img"></td>
-                                <td class="product-name" data-title="Product"><a href="#">Ornare sed consequat</a></td>
-                                <td class="product-price" data-title="Price"><p>₹ 81.00</p></td>
-                                <td class="product-quantity" data-title="Quantity">
-                                    <div class="quantity_filter">
-                                        <input type="button" value="-" class="minus">
-                                        <input class="quantity-number qty" type="text" value="1" min="1" max="10">
-                                        <input type="button" value="+" class="plus">
-                                    </div>
-                                </td>
-                                <td class="product-total" data-title="Subprice"><p>₹ 81.00</p></td>
-                                <td class="row-close close-2" data-title="product-remove"><a href="#"><i class="ion-close-circled"></i></a></td>
-                            </tr>
-
+                                @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="12">
                                     <ul class="table-btn">
                                         <li><a href="/shop/0" class="btn btn-secondary"><i class="fa fa-chevron-left"></i>Continue Shopping</a></li>
-                                        <li><a href="/checkout" class="btn btn-primary"><i class="fa fa-refresh"></i>Checkout</a></li>
+                                        <li><a href="/updateCart" class="btn btn-primary"><i class="fa fa-refresh"></i>Update Cart</a></li>
+                                        <li><a href="/checkout" class="btn btn-secondary">Proceed To checkout <i class="fa fa-chevron-right"></i></a></li>
                                     </ul>
                                 </td>
                             </tr>

@@ -19,6 +19,11 @@
 <!-- End Header Section -->
 
 <!-- Start Shop Section -->
+@if (session('alert'))
+    <div class="alert alert-success">
+        {{ session('alert') }}
+    </div>
+@endif
 <section class="shop-inner-section pt_large pb_large">
 	<div class="container">
     	<div class="row">
@@ -49,9 +54,13 @@
                         	<div class="product-img common-cart-img">
                             <img src="/{{explode(',', $product -> images)[0]}}" alt="product-img">
                                 <div class="hover-option">
+
+                                <form action="/addtocart/{{ $product -> id }}">
                                 	<div class="add-cart-btn">
-                                    	<a href="#" class="btn btn-primary">Add To Cart</a>
+                                    <input type="hidden" name="quantity" value="1" />
+                            <button type="submit" @if(($product -> availability) == 0) disabled="" @endif class="btn btn-primary">Add To Cart</button>
                                     </div>
+                                </form>
                                 </div>
                             </div>
                             <div class="product-info common-cart-info text-center">
