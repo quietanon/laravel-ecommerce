@@ -34,6 +34,8 @@ Route::get('/cart', 'App\Http\Controllers\CartsController@index');
 
 Route::get('/suscribe', 'App\Http\Controllers\SuscribeController@suscribe');
 
+Route::get('/contactrequest', 'App\Http\Controllers\ContactController@contact');
+
 Route::get('/contact', function () {
     return View::make('pages.contact');
 });

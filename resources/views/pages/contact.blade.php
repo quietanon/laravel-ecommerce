@@ -20,6 +20,11 @@
 <!-- End Header Section -->
 
 <!-- Start Contact Detail Section -->
+@if (session('alert'))
+    <div class="alert alert-success">
+        {{ session('alert') }}
+    </div>
+@endif
 <section class="contact-inner-page pt_large">
 	<div class="container">
     	<div class="row">
@@ -28,32 +33,29 @@
                     <div class="title text-left">
                         <h4>Leave a Message</h4>
                     </div>
-                    <form method="post" name="enq" class="contact-form form-with-label">
+                    <form method="get" action="/contactrequest" class="contact-form form-with-label">
                         <div class="input-1">
                             <label>Your Name<span>*</span></label>
-                            <input required="" class="form-control" id="first-name" placeholder="Enter Your Name" value="" type="text">
+                            <input required="" class="form-control" name="name" placeholder="Enter Your Name" value="" type="text">
                         </div>
                         <div class="input-2">
                             <label>Your Email<span>*</span></label>
-                            <input required="" class="form-control" id="email" placeholder="Enter Your Email" value="" type="email">
+                            <input required="" class="form-control" name="email" placeholder="Enter Your Email" value="" type="email">
                         </div>
                         <div class="input-3">
                             <label>Your Phone<span>*</span></label>
-                            <input required="" class="form-control" id="phone" placeholder="Enter Your Phone" value="" type="text">
+                            <input required="" class="form-control" name="phone" placeholder="Enter Your Phone" value="" type="text">
                         </div>
                         <div class="input-4">
                             <label>subject<span>*</span></label>
-                            <input required="" class="form-control" id="subject" placeholder="Enter Your Subject" value="" type="text">
+                            <input required="" class="form-control" name="subject" placeholder="Enter Your Subject" value="" type="text">
                         </div>
                         <div class="input-5">
                             <label>Message<span>*</span></label>
-                            <textarea required="" rows="3" class="form-control" id="description" placeholder="Your Message"></textarea>
+                            <textarea required="" rows="3" class="form-control" name="message" placeholder="Your Message"></textarea>
                         </div>
                         <div class="submit-btn">
-                            <button type="submit" id="submitButton" class="btn btn-primary">submit</button>
-                        </div>
-                        <div class="col-md-12">
-                            <div id="alert-msg" class="alert-msg text-center"></div>
+                            <button type="submit" name="submitButton" class="btn btn-primary">submit</button>
                         </div>
                     </form>
                 </div>
@@ -76,5 +78,4 @@
         </div>
     </div>
 </section>
-<!-- End Contact Detail Section -->
 @stop

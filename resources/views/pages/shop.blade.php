@@ -101,20 +101,6 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="side-filter-box side-box">
-                        <div class="side-box-title">
-                            <h6>Filter</h6>
-                        </div>
-                        <div class="filter-box-detail">
-                            <div id="slider-range"></div>
-                            <div class="price_slider_amount">
-                                <div class="slider-values d-flex align-items-center">
-                                	<p>Price</p>
-                                    <input type="text" id="amount" name="price"  placeholder="Add Your Price"  onchange="alert('hello')"/>
-                                </div>
-                            </div>
-                        </div>
-                	</div>
                     <div class="side-quantity-box side-box">
                     	<div class="side-box-title">
                         	<h6>recent Product</h6>
