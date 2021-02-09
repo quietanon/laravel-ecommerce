@@ -113,7 +113,7 @@
                                 </div>
                                 <div class="cart-product">
                                     <a href="/product/{{ $recent -> id }}">{{ $recent -> name }}</a>
-                                    <a href="/product/{{ $recent -> id }}" class="cp-comments"><i class="fa fa-comments"></i> 5 Comments</a>
+                                    <a href="/product/{{ $recent -> id }}" class="cp-comments"><i class="fa fa-tags"></i> {{ $recent -> category }}</a>
                                 </div>
                             </div>
                             @endforeach

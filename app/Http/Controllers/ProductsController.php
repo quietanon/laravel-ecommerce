@@ -13,6 +13,8 @@ class ProductsController extends Controller
 {
     public function getProduct($id) {
         $product = DB::table('products')->where('id', $id)->first();
+        if ($product === null)
+            abort(404);
         $reviews = DB::table('reviews')
             ->join('users', 'users.id', '=', 'reviews.user_id')
             ->select('users.name', 'reviews.*')

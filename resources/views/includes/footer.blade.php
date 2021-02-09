@@ -1,4 +1,3 @@
-
 <!-- Start Facility Section-->
 <section class="facility-section pb_large pt_large">
 	<div class="container">
@@ -82,13 +81,9 @@
                     	<h6 class="fb-title">CATEGORIES</h6>
                         <div class="fb-iner">
                         	<ul class="footer-links">
-                            	<li><a href="#">Fashion Sneakers</a></li>
-                                <li><a href="#">Jackets</a></li>
-                                <li><a href="#">Outdoor Shop</a></li>
-                                <li><a href="#">Pants</a></li>
-                                <li><a href="#">Shirts & Tops</a></li>
-                                <li><a href="#">Swim Shop</a></li>
-                                <li><a href="#">Swimwear</a></li>
+                                @foreach ($footercategories as $category)
+                                    <li><a href="/shop/0/?searchbox={{ $category -> category }}">{{ $category -> category }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -101,8 +96,8 @@
                             	<li><a href="#">Orders</a></li>
                                 <li><a href="#">Compare</a></li>
                                 <li><a href="#">Wishlist</a></li>
-                                <li><a href="#">Log In</a></li>
-                                <li><a href="#">Register</a></li>
+                                <li><a href="/account">Log In</a></li>
+                                <li><a href="/account">Register</a></li>
                             </ul>
                         </div>
                     </div>
@@ -168,6 +163,4 @@
 <!-- Custom css -->
 <script src="/js/custom.js" type="text/javascript"></script>
 </body>
-
-<!-- Mirrored from bestwebcreator.com/ATZShop/demo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Jul 2020 09:51:10 GMT -->
 </html>

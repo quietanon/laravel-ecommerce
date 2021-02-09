@@ -24,7 +24,8 @@ class HeaderServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('includes.header', function ($view){
+        view()->composer('layouts.default', function ($view){
+            $categories = DB::select('select category from products group by category');
             if (auth() -> check()) {
                 $current = DB::table('carts')
                     ->join('products', 'products.id', '=', 'carts.product_id')
@@ -37,9 +38,9 @@ class HeaderServiceProvider extends ServiceProvider
                 foreach($current as $single) {
                     $total = $total + ($single->finalPrize * $single->quantity);
                 }
-                $view->with(['headercarts' => $current, 'count' => $count, 'total' => $total]);
+                $view->with(['headercarts' => $current, 'count' => $count, 'total' => $total, 'footercategories' => $categories]);
             } else{
-                $view->with(['headercarts' => null, 'count' => 0, 'total' => 0]);
+                $view->with(['headercarts' => null, 'count' => 0, 'total' => 0, 'footercategories' => $categories]);
             }
         });
     }

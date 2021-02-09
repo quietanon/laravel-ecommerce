@@ -130,7 +130,7 @@
                                 ₹{{ $total }}<i class="fa fa-angle-down"></i>
                             @endif
                             </a>
-                            @if ($total !== 0)
+                            @if ($count !== 0)
                             <div class="cart-box">
                                 <div class="cart-info">
                                 @foreach ($headercarts as $cart)
