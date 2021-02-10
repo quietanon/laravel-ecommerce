@@ -42,8 +42,8 @@
                     </div>
                     <div class="shop-list_grid">
                         <div class="list_grid-btns">
-                    		<a href="javascript:void(0)" class="grid-view on"><i class="ion-grid"></i></a>
                         	<a href="javascript:void(0)" class="list-view"><i class="ion-navicon-round"></i></a>
+                    		<a href="javascript:void(0)" class="grid-view on"><i class="ion-grid"></i></a>
                         </div>
                     </div>
                 </div>

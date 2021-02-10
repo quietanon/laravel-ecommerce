@@ -16,6 +16,18 @@ class CheckoutController extends Controller
                 'alert' => 'You have to login first!!'
             ]);
         }
+
+        $checkExisting = DB::table('carts')
+            ->where('user_id', auth()->user()->id)
+            ->where('active', 'true')
+            ->first();
+
+        if (!$checkExisting) {
+            return redirect()->intended('/')->with([
+                'alert' => 'Nothing in cart!!!'
+            ]);
+        }
+
         $user = DB::table('users')->where('id', auth()->user()->id)->first();
         $current = DB::table('carts')
             ->join('products', 'products.id', '=', 'carts.product_id')

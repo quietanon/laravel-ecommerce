@@ -12,7 +12,7 @@ class CartsController extends Controller
 
     public function index() {
         if(!auth() -> check())
-            return redirect()->intended('/');
+            return redirect()->intended('/account');
 
         $current = DB::table('carts')
             ->join('products', 'products.id', '=', 'carts.product_id')
@@ -52,7 +52,7 @@ class CartsController extends Controller
         } else {
             DB::table('carts')
                 ->where('id', $checkExisting -> id)
-                ->update(['quantity' => $_GET['quantity'],
+                ->update(['quantity' => $_GET['quantity'] + $checkExisting -> quantity,
                     'active' => 'true'
             ]);
         }
@@ -72,11 +72,33 @@ class CartsController extends Controller
     }
 
     public function updateCart($id, $quantity) {
-        DB::table('carts')
-            ->where('id', $id)
-            ->update(['quantity' => $quantity,
-                'active' => 'true'
-        ]);
+        $quantity_db = DB::table('carts')
+            ->join('products', 'products.id', '=', 'carts.product_id')
+            ->select('products.availability')
+            ->where('carts.id', $id)
+            ->first();
+
+        if($quantity < 1) {
+            return redirect()->back()->with([
+                'alert' => 'Minimum value should be 1'
+            ]);
+        } else if ($quantity > $quantity_db -> availability) {
+            DB::table('carts')
+                ->where('id', $id)
+                ->update(['quantity' => $quantity_db -> availability,
+                    'active' => 'true'
+            ]);
+
+            return redirect()->back()->with([
+                'alert' => 'Maximum available quantity for this product is '.$quantity_db -> availability.'.'
+            ]);
+        } else {
+            DB::table('carts')
+                ->where('id', $id)
+                ->update(['quantity' => $quantity,
+                    'active' => 'true'
+            ]);
+        }
         return redirect()->back()->with([
             'alert' => 'Your cart has been updated!'
         ]);
