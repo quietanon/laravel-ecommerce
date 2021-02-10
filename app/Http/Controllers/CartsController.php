@@ -9,7 +9,11 @@ use App\Http\Controllers\Controller;
 
 class CartsController extends Controller
 {
+
     public function index() {
+        if(!auth() -> check())
+            return redirect()->intended('/');
+
         $current = DB::table('carts')
             ->join('products', 'products.id', '=', 'carts.product_id')
             ->select('products.name', 'products.finalPrize', 'products.images', 'products.availability', 'carts.quantity', 'carts.id', 'carts.product_id')
